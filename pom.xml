@@ -21,6 +21,8 @@
     <modules>
         <module>GeyserAdapters</module>
         <module>adapters</module>
+        <module>spigot/v1_16_R1</module>
+        <module>spigot/v1_16_R2</module>
         <module>spigot/v1_16_R3</module>
     </modules>
 
