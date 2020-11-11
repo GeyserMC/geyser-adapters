@@ -30,5 +30,6 @@ package org.geysermc.adapters;
  * the world.
  */
 public abstract class WorldAdapter {
+    public static final int GEYSER_PROTOCOL_VERSION = 754;
     public abstract int getBlockAt(String world, int x, int y, int z);
 }
