@@ -25,46 +25,14 @@
 
 package org.geysermc.adapters.spigot.v1_16_R1;
 
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import net.minecraft.server.v1_16_R1.Block;
 import net.minecraft.server.v1_16_R1.Chunk;
 import net.minecraft.server.v1_16_R1.ChunkSection;
-import net.minecraft.server.v1_16_R1.IBlockData;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_16_R1.CraftWorld;
 import org.geysermc.adapters.WorldAdapter;
-import us.myles.ViaVersion.api.Pair;
-import us.myles.ViaVersion.api.data.MappingData;
-import us.myles.ViaVersion.api.protocol.Protocol;
-import us.myles.ViaVersion.api.protocol.ProtocolRegistry;
-import us.myles.ViaVersion.api.protocol.ProtocolVersion;
-
-import java.util.List;
 
 public class WorldAdapter_v1_16_R1 extends WorldAdapter {
-    private final Int2IntMap oldToNewBlocks = new Int2IntOpenHashMap();
-    private final boolean isViaVersion = true;
-
-    public WorldAdapter_v1_16_R1() {
-        if (!isViaVersion) {
-            return;
-        }
-        List<Pair<Integer, Protocol>> protocolList = ProtocolRegistry.getProtocolPath(WorldAdapter.GEYSER_PROTOCOL_VERSION,
-                ProtocolVersion.v1_16_1.getVersion());
-        for (IBlockData block : Block.REGISTRY_ID) {
-            int oldId = Block.getCombinedId(block);
-            int newId = oldId;
-            for (int i = protocolList.size() - 1; i >= 0; i--) {
-                MappingData mappingData = protocolList.get(i).getValue().getMappingData();
-                if (mappingData != null) {
-                    newId = mappingData.getNewBlockStateId(newId);
-                }
-            }
-            oldToNewBlocks.put(oldId, newId);
-        }
-    }
-
     @Override
     public int getBlockAt(String world, int x, int y, int z) {
         Chunk chunk = ((CraftWorld) Bukkit.getWorld(world)).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
@@ -74,8 +42,7 @@ public class WorldAdapter_v1_16_R1 extends WorldAdapter {
         if (y >= 0 && y >> 4 < chunk.getSections().length) {
             ChunkSection section = chunk.getSections()[y >> 4];
             if (!ChunkSection.a(section)) {
-                int block =  Block.getCombinedId(section.getType(x & 15, y & 15, z & 15));
-                return oldToNewBlocks.get(block);
+                return Block.getCombinedId(section.getType(x & 15, y & 15, z & 15));
             }
         }
         return 0;
