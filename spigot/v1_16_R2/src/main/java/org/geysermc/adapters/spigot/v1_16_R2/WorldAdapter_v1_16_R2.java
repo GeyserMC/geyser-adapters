@@ -25,9 +25,12 @@
 
 package org.geysermc.adapters.spigot.v1_16_R2;
 
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.server.v1_16_R2.Block;
 import net.minecraft.server.v1_16_R2.Chunk;
 import net.minecraft.server.v1_16_R2.ChunkSection;
+import net.minecraft.server.v1_16_R2.IBlockData;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_16_R2.CraftWorld;
 import org.geysermc.adapters.WorldAdapter;
@@ -46,5 +49,14 @@ public class WorldAdapter_v1_16_R2 extends WorldAdapter {
             }
         }
         return 0;
+    }
+
+    @Override
+    public IntList getAllBlockStates() {
+        IntList blockStates = new IntArrayList();
+        for (IBlockData block : Block.REGISTRY_ID) {
+            blockStates.add(Block.getCombinedId(block));
+        }
+        return blockStates;
     }
 }

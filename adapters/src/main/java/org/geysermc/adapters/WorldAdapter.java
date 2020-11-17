@@ -25,10 +25,14 @@
 
 package org.geysermc.adapters;
 
+import it.unimi.dsi.fastutil.ints.IntList;
+
 /**
  * An adapter used for getting specific information from
  * the world.
  */
 public abstract class WorldAdapter {
     public abstract int getBlockAt(String world, int x, int y, int z);
+
+    public abstract IntList getAllBlockStates();
 }
