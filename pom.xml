@@ -11,7 +11,7 @@
 
     <name>Geyser Adapters</name>
 
-    <description>Adatpers for Geyser.</description>
+    <description>Adapters for Geyser.</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,6 +22,9 @@
         <module>GeyserAdapters</module>
         <module>adapters</module>
         <module>spigot/base</module>
+        <module>spigot/v1_8_R3</module>
+        <module>spigot/v1_12_R1</module>
+        <module>spigot/v1_15_R1</module>
         <module>spigot/v1_16_R1</module>
         <module>spigot/v1_16_R2</module>
         <module>spigot/v1_16_R3</module>

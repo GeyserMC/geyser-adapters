@@ -23,19 +23,16 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.adapters.spigot.v1_16_R2;
+package org.geysermc.adapters.spigot.v1_8_R3;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.server.v1_16_R2.Block;
-import net.minecraft.server.v1_16_R2.Chunk;
-import net.minecraft.server.v1_16_R2.ChunkSection;
-import net.minecraft.server.v1_16_R2.IBlockData;
+import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_16_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.geysermc.adapters.WorldAdapter;
 
-public class WorldAdapter_v1_16_R2 extends WorldAdapter {
+public class WorldAdapter_v1_8_R3 extends WorldAdapter {
     @Override
     public int getBlockAt(String world, int x, int y, int z) {
         Chunk chunk = ((CraftWorld) Bukkit.getWorld(world)).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
@@ -44,8 +41,10 @@ public class WorldAdapter_v1_16_R2 extends WorldAdapter {
         }
         if (y >= 0 && y >> 4 < chunk.getSections().length) {
             ChunkSection section = chunk.getSections()[y >> 4];
-            if (!ChunkSection.a(section)) { // is chunk empty
-                return Block.getCombinedId(section.getType(x & 15, y & 15, z & 15));
+            if (section != null) {
+                IBlockData blockData = section.getType(x & 15, y & 15, z & 15);
+                Block block = blockData.getBlock();
+                return (Block.getId(block) << 4) + (block.toLegacyData(blockData) & 0x0F);
             }
         }
         return 0;
@@ -54,8 +53,8 @@ public class WorldAdapter_v1_16_R2 extends WorldAdapter {
     @Override
     public IntList getAllBlockStates() {
         IntList blockStates = new IntArrayList();
-        for (IBlockData block : Block.REGISTRY_ID) {
-            blockStates.add(Block.getCombinedId(block));
+        for (Block block : Block.REGISTRY) {
+            blockStates.add(Block.getCombinedId(block.getBlockData()));
         }
         return blockStates;
     }

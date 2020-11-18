@@ -44,7 +44,7 @@ public class WorldAdapter_v1_16_R3 extends WorldAdapter {
         }
         if (y >= 0 && y >> 4 < chunk.getSections().length) {
             ChunkSection section = chunk.getSections()[y >> 4];
-            if (!ChunkSection.a(section)) {
+            if (!ChunkSection.a(section)) { // is chunk empty
                 return Block.getCombinedId(section.getType(x & 15, y & 15, z & 15));
             }
         }
