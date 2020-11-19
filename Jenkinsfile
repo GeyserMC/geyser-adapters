@@ -11,7 +11,7 @@ pipeline {
         stage ('Build') {
             steps {
                 sh 'git submodule update --init --recursive'
-                sh 'curl https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -O BuildTools.jar'
+                sh 'curl https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -o BuildTools.jar'
                 sh 'java -jar BuildTools.jar --rev 1.8.8'
                 sh 'java -jar BuildTools.jar --rev 1.12.2'
                 sh 'java -jar BuildTools.jar --rev 1.15.2'
