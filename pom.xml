@@ -19,8 +19,8 @@
     <url>https://geysermc.org</url>
 
     <modules>
-        <module>GeyserAdapters</module>
         <module>adapters</module>
+        <module>spigot/all</module>
         <module>spigot/base</module>
         <module>spigot/v1_8_R3</module>
         <module>spigot/v1_12_R1</module>

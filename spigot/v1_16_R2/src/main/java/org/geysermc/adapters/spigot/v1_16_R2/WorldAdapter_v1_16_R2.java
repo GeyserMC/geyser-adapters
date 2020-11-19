@@ -31,14 +31,14 @@ import net.minecraft.server.v1_16_R2.Block;
 import net.minecraft.server.v1_16_R2.Chunk;
 import net.minecraft.server.v1_16_R2.ChunkSection;
 import net.minecraft.server.v1_16_R2.IBlockData;
-import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_16_R2.CraftWorld;
-import org.geysermc.adapters.WorldAdapter;
+import org.geysermc.adapters.spigot.SpigotWorldAdapter;
 
-public class WorldAdapter_v1_16_R2 extends WorldAdapter {
+public class WorldAdapter_v1_16_R2 extends SpigotWorldAdapter {
     @Override
-    public int getBlockAt(String world, int x, int y, int z) {
-        Chunk chunk = ((CraftWorld) Bukkit.getWorld(world)).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
+    public int getBlockAt(World world, int x, int y, int z) {
+        Chunk chunk = ((CraftWorld) world).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
         if (chunk == null) { // should never happen but just to be on the safe side
             return 0;
         }

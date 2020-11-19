@@ -27,15 +27,18 @@ package org.geysermc.adapters.spigot.v1_8_R3;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.Bukkit;
+import net.minecraft.server.v1_8_R3.Block;
+import net.minecraft.server.v1_8_R3.Chunk;
+import net.minecraft.server.v1_8_R3.ChunkSection;
+import net.minecraft.server.v1_8_R3.IBlockData;
+import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.geysermc.adapters.WorldAdapter;
+import org.geysermc.adapters.spigot.SpigotWorldAdapter;
 
-public class WorldAdapter_v1_8_R3 extends WorldAdapter {
+public class WorldAdapter_v1_8_R3 extends SpigotWorldAdapter {
     @Override
-    public int getBlockAt(String world, int x, int y, int z) {
-        Chunk chunk = ((CraftWorld) Bukkit.getWorld(world)).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
+    public int getBlockAt(World world, int x, int y, int z) {
+        Chunk chunk = ((CraftWorld) world).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
         if (chunk == null) { // should never happen but just to be on the safe side
             return 0;
         }

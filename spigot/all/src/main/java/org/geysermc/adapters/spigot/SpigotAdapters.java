@@ -23,16 +23,22 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.adapters;
+package org.geysermc.adapters.spigot;
 
-import it.unimi.dsi.fastutil.ints.IntList;
+public class SpigotAdapters {
+    private static SpigotWorldAdapter worldAdapter;
 
-/**
- * An adapter used for getting specific information from
- * the world.
- */
-public abstract class WorldAdapter<T> {
-    public abstract int getBlockAt(T world, int x, int y, int z);
+    public static void registerWorldAdapter(String version) {
+        SpigotWorldAdapterVersion adapterVersion = SpigotWorldAdapterVersion.getByName(version);
+        if (adapterVersion == null) {
+            throw new RuntimeException(String.format(
+                    "WorldAdapter for Spigot %s could not be found!",
+                    version));
+        }
+        worldAdapter = adapterVersion.createAdapter();
+    }
 
-    public abstract IntList getAllBlockStates();
+    public static SpigotWorldAdapter getWorldAdapter() {
+        return worldAdapter;
+    }
 }
