@@ -16,7 +16,7 @@ pipeline {
                 sh 'java -jar BuildTools.jar --rev 1.12.2'
                 sh 'java -jar BuildTools.jar --rev 1.15.2'
                 sh 'java -jar BuildTools.jar --rev 1.16.1'
-                sh 'java -jar BuildTools.jar --rev 1.16.2'
+                sh 'java -jar BuildTools.jar --rev 1.16.3'
                 sh 'java -jar BuildTools.jar --rev 1.16.4'
                 sh 'mvn clean package'
             }
