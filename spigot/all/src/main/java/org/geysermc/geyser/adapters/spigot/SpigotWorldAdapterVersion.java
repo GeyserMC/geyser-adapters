@@ -36,7 +36,7 @@ import java.util.function.Supplier;
 
 public enum SpigotWorldAdapterVersion {
     V1_8_R3(WorldAdapter_v1_8_R3::new),
-    V1_12_R2(WorldAdapter_v1_12_R1::new),
+    V1_12_R1(WorldAdapter_v1_12_R1::new),
     V1_15_R1(WorldAdapter_v1_15_R1::new),
     V1_16_R1(WorldAdapter_v1_16_R1::new),
     V1_16_R2(WorldAdapter_v1_16_R2::new),

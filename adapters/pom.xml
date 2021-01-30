@@ -13,9 +13,9 @@
     <artifactId>adapters</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.geysermc.geyser</groupId>
+            <groupId>org.geysermc</groupId>
             <artifactId>common</artifactId>
-            <version>1.3.0-SNAPSHOT</version>
+            <version>1.2.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
