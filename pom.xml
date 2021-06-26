@@ -6,7 +6,7 @@
 
     <groupId>org.geysermc.geyser.adapters</groupId>
     <artifactId>geyser-adapters</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Geyser Adapters</name>
@@ -28,6 +28,7 @@
         <module>spigot/v1_16_R1</module>
         <module>spigot/v1_16_R2</module>
         <module>spigot/v1_16_R3</module>
+        <module>spigot/v1_17_R1</module>
     </modules>
 
     <repositories>

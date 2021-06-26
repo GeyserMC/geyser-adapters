@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'Maven 3'
-        jdk 'Java 8'
+        jdk 'Java 16'
     }
     options {
         buildDiscarder(logRotator(artifactNumToKeepStr: '20'))
@@ -18,6 +18,7 @@ pipeline {
                 sh 'java -jar BuildTools.jar --rev 1.16.1'
                 sh 'java -jar BuildTools.jar --rev 1.16.3'
                 sh 'java -jar BuildTools.jar --rev 1.16.4'
+                sh 'java -jar BuildTools.jar --rev 1.17'
                 sh 'mvn clean package'
             }
             post {
