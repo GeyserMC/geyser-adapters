@@ -60,10 +60,6 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </repository>
-        <repository> <!-- Needed since 1.18 -->
-            <id>spigot-public</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/public/</url>
-        </repository>
     </repositories>
 
     <dependencies>
