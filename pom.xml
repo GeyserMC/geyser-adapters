@@ -6,14 +6,14 @@
 
     <groupId>org.geysermc.geyser.adapters</groupId>
     <artifactId>geyser-adapters</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Geyser Adapters</name>
 
     <description>Adapters for Geyser.</description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <url>https://geysermc.org/</url>
@@ -22,13 +22,13 @@
         <module>adapters</module>
         <module>spigot/all</module>
         <module>spigot/base</module>
-        <module>spigot/v1_8_R3</module>
         <module>spigot/v1_12_R1</module>
         <module>spigot/v1_15_R1</module>
         <module>spigot/v1_16_R1</module>
         <module>spigot/v1_16_R2</module>
         <module>spigot/v1_16_R3</module>
         <module>spigot/v1_17_R1</module>
+        <module>spigot/v1_18_R1</module>
     </modules>
 
     <repositories>

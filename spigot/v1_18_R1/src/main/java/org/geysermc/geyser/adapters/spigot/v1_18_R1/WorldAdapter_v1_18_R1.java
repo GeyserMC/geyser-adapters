@@ -23,31 +23,35 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.geyser.adapters.spigot.v1_8_R3;
+package org.geysermc.geyser.adapters.spigot.v1_18_R1;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.server.v1_8_R3.Block;
-import net.minecraft.server.v1_8_R3.Chunk;
-import net.minecraft.server.v1_8_R3.ChunkSection;
-import net.minecraft.server.v1_8_R3.IBlockData;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.IBlockData;
+import net.minecraft.world.level.chunk.Chunk;
+import net.minecraft.world.level.chunk.ChunkSection;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
 import org.geysermc.geyser.adapters.spigot.SpigotWorldAdapter;
 
-public class WorldAdapter_v1_8_R3 extends SpigotWorldAdapter {
+public class WorldAdapter_v1_18_R1 extends SpigotWorldAdapter {
     @Override
     public int getBlockAt(World world, int x, int y, int z) {
+        if (y < world.getMinHeight()) {
+            return 0;
+        }
+
         Chunk chunk = ((CraftWorld) world).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
         if (chunk == null) { // should never happen but just to be on the safe side
             return 0;
         }
-        if (y >= 0 && y >> 4 < chunk.getSections().length) {
-            ChunkSection section = chunk.getSections()[y >> 4];
-            if (section != null) {
-                IBlockData blockData = section.getType(x & 15, y & 15, z & 15);
-                Block block = blockData.getBlock();
-                return (Block.getId(block) << 4) + (block.toLegacyData(blockData) & 0x0F);
+        int worldOffset = world.getMinHeight() >> 4;
+        int chunkOffset = (y >> 4) - worldOffset;
+        if (chunkOffset < chunk.d().length) {
+            ChunkSection section = chunk.d()[chunkOffset];
+            if (section != null && !section.c()) { // is chunk empty
+                return Block.i(section.a(x & 15, y & 15, z & 15)); // Section get type
             }
         }
         return 0;
@@ -56,8 +60,8 @@ public class WorldAdapter_v1_8_R3 extends SpigotWorldAdapter {
     @Override
     public IntList getAllBlockStates() {
         IntList blockStates = new IntArrayList();
-        for (Block block : Block.REGISTRY) {
-            blockStates.add(Block.getCombinedId(block.getBlockData()));
+        for (IBlockData block : Block.p) { // Block.REGISTRY
+            blockStates.add(Block.i(block)); // Get combined ID
         }
         return blockStates;
     }
