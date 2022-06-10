@@ -27,22 +27,23 @@ package org.geysermc.geyser.adapters.spigot;
 
 import org.geysermc.geyser.adapters.spigot.v1_12_R1.WorldAdapter_v1_12_R1;
 import org.geysermc.geyser.adapters.spigot.v1_15_R1.WorldAdapter_v1_15_R1;
-import org.geysermc.geyser.adapters.spigot.v1_16_R2.WorldAdapter_v1_16_R2;
 import org.geysermc.geyser.adapters.spigot.v1_16_R3.WorldAdapter_v1_16_R3;
 import org.geysermc.geyser.adapters.spigot.v1_17_R1.WorldAdapter_v1_17_R1;
 import org.geysermc.geyser.adapters.spigot.v1_18_R1.WorldAdapter_v1_18_R1;
 import org.geysermc.geyser.adapters.spigot.v1_18_R1.WorldAdapter_v1_18_R2;
+import org.geysermc.geyser.adapters.spigot.v1_19_R1.WorldAdapter_v1_19_R1;
 
+import java.util.Locale;
 import java.util.function.Supplier;
 
 public enum SpigotWorldAdapterVersion {
     V1_12_R1(WorldAdapter_v1_12_R1::new),
     V1_15_R1(WorldAdapter_v1_15_R1::new),
-    V1_16_R2(WorldAdapter_v1_16_R2::new),
     V1_16_R3(WorldAdapter_v1_16_R3::new),
     V1_17_R1(WorldAdapter_v1_17_R1::new),
     V1_18_R1(WorldAdapter_v1_18_R1::new),
-    V1_18_R2(WorldAdapter_v1_18_R2::new);
+    V1_18_R2(WorldAdapter_v1_18_R2::new),
+    V1_19_R1(WorldAdapter_v1_19_R1::new);
 
     private final Supplier<SpigotWorldAdapter> worldAdapterSupplier;
 
@@ -51,7 +52,7 @@ public enum SpigotWorldAdapterVersion {
     }
 
     public static SpigotWorldAdapterVersion getByName(String versionName) {
-        versionName = versionName.toUpperCase();
+        versionName = versionName.toUpperCase(Locale.ROOT);
         for (SpigotWorldAdapterVersion version : values()) {
             if (version.name().equals(versionName)) {
                 return version;

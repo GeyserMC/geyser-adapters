@@ -234,3 +234,6 @@ nbdist/
 .history
 
 # End of https://www.gitignore.io/api/git,java,maven,eclipse,netbeans,jetbrains+all,visualstudiocode
+
+# https://github.com/Alvinn8/paper-nms-maven-plugin
+.paper-nms
