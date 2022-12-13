@@ -35,4 +35,8 @@ public abstract class WorldAdapter<T> {
     public abstract int getBlockAt(T world, int x, int y, int z);
 
     public abstract IntList getAllBlockStates();
+
+    public String[] getBiomeSuggestions(boolean tags) {
+        return null;
+    }
 }

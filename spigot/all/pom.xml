@@ -5,7 +5,7 @@
   <parent>
     <artifactId>geyser-adapters</artifactId>
     <groupId>org.geysermc.geyser.adapters</groupId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.6-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -22,12 +22,6 @@
     <dependency>
       <groupId>org.geysermc.geyser.adapters</groupId>
       <artifactId>spigot-base</artifactId>
-      <version>${project.parent.version}</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.geysermc.geyser.adapters</groupId>
-      <artifactId>v1_12_R1</artifactId>
       <version>${project.parent.version}</version>
       <scope>compile</scope>
     </dependency>
@@ -64,6 +58,12 @@
     <dependency>
       <groupId>org.geysermc.geyser.adapters</groupId>
       <artifactId>v1_19_R1</artifactId>
+      <version>${project.parent.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.geysermc.geyser.adapters</groupId>
+      <artifactId>v1_19_R2</artifactId>
       <version>${project.parent.version}</version>
       <scope>compile</scope>
     </dependency>
