@@ -31,6 +31,7 @@ import org.geysermc.geyser.adapters.spigot.v1_17_R1.WorldAdapter_v1_17_R1;
 import org.geysermc.geyser.adapters.spigot.v1_18_R1.WorldAdapter_v1_18_R1;
 import org.geysermc.geyser.adapters.spigot.v1_18_R1.WorldAdapter_v1_18_R2;
 import org.geysermc.geyser.adapters.spigot.v1_19_R1.WorldAdapter_v1_19_R1;
+import org.geysermc.geyser.adapters.spigot.v1_19_R2.WorldAdapter_v1_19_R2;
 import org.geysermc.geyser.adapters.spigot.v1_19_R3.WorldAdapter_v1_19_R3;
 
 import java.util.Locale;
@@ -43,7 +44,8 @@ public enum SpigotWorldAdapterVersion {
     V1_18_R1(WorldAdapter_v1_18_R1::new),
     V1_18_R2(WorldAdapter_v1_18_R2::new),
     V1_19_R1(WorldAdapter_v1_19_R1::new),
-    V1_19_R2(WorldAdapter_v1_19_R3::new);
+    V1_19_R2(WorldAdapter_v1_19_R2::new),
+    V1_19_R3(WorldAdapter_v1_19_R3::new);
 
     private final Supplier<SpigotWorldAdapter> worldAdapterSupplier;
 
