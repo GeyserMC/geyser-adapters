@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>v1_18_R1</artifactId>
+    <artifactId>v1_19_R3</artifactId>
 
     <properties>
         <java.version>17</java.version>
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>ca.bkaw</groupId>
             <artifactId>paper-nms</artifactId>
-            <version>1.18.1-SNAPSHOT</version>
+            <version>1.19.4-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

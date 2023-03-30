@@ -28,9 +28,9 @@ package org.geysermc.geyser.adapters.spigot.v1_17_R1;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.IBlockData;
-import net.minecraft.world.level.chunk.Chunk;
-import net.minecraft.world.level.chunk.ChunkSection;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.chunk.LevelChunkSection;
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
 import org.geysermc.geyser.adapters.spigot.SpigotWorldAdapter;
@@ -42,16 +42,16 @@ public class WorldAdapter_v1_17_R1 extends SpigotWorldAdapter {
             return 0;
         }
 
-        Chunk chunk = ((CraftWorld) world).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
+        LevelChunk chunk = ((CraftWorld) world).getHandle().getChunkIfLoaded(x >> 4, z >> 4);
         if (chunk == null) { // should never happen but just to be on the safe side
             return 0;
         }
         int worldOffset = world.getMinHeight() >> 4;
         int chunkOffset = (y >> 4) - worldOffset;
         if (chunkOffset < chunk.getSections().length) {
-            ChunkSection section = chunk.getSections()[chunkOffset];
-            if (!ChunkSection.a(section)) { // is chunk empty
-                return Block.getCombinedId(section.getType(x & 15, y & 15, z & 15));
+            LevelChunkSection section = chunk.getSections()[chunkOffset];
+            if (!LevelChunkSection.isEmpty(section)) {
+                return Block.getId(section.getBlockState(x & 15, y & 15, z & 15));
             }
         }
         return 0;
@@ -60,8 +60,8 @@ public class WorldAdapter_v1_17_R1 extends SpigotWorldAdapter {
     @Override
     public IntList getAllBlockStates() {
         IntList blockStates = new IntArrayList();
-        for (IBlockData block : Block.p) { // Block.REGISTRY
-            blockStates.add(Block.getCombinedId(block));
+        for (BlockState block : Block.BLOCK_STATE_REGISTRY) {
+            blockStates.add(Block.getId(block));
         }
         return blockStates;
     }
