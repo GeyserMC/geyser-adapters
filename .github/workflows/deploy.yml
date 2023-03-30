@@ -21,6 +21,19 @@ jobs:
           server-id: opencollab-snapshot-repo
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
+      - name: Setup NMS
+        shell: bash
+        run: |
+          curl https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -o BuildTools.jar
+          /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/bin/java -jar BuildTools.jar --rev 1.15.2
+          /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/bin/java -jar BuildTools.jar --rev 1.16.4
+          mvn ca.bkaw:paper-nms-maven-plugin:1.2.1:init -pl :v1_17_R1
+          mvn ca.bkaw:paper-nms-maven-plugin:1.2.1:init -pl :v1_18_R1
+          mvn ca.bkaw:paper-nms-maven-plugin:1.2.1:init -pl :v1_18_R2
+          mvn ca.bkaw:paper-nms-maven-plugin:1.2.1:init -pl :v1_19_R1
+          mvn ca.bkaw:paper-nms-maven-plugin:1.2.1:init -pl :v1_19_R2
+          mvn ca.bkaw:paper-nms-maven-plugin:1.2.1:init -pl :v1_19_R3
+          mvn clean package -B'
       - name: Deploy with Maven
         run: mvn deploy -B -P deploy
         env:
