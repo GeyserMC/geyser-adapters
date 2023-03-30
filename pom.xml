@@ -22,8 +22,6 @@
         <module>adapters</module>
         <module>spigot/all</module>
         <module>spigot/base</module>
-        <module>spigot/v1_15_R1</module>
-        <module>spigot/v1_16_R3</module>
         <module>spigot/v1_17_R1</module>
         <module>spigot/v1_18_R1</module>
         <module>spigot/v1_18_R2</module>
