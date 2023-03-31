@@ -6,7 +6,7 @@
 
     <groupId>org.geysermc.geyser.adapters</groupId>
     <artifactId>geyser-adapters</artifactId>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.8-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Geyser Adapters</name>

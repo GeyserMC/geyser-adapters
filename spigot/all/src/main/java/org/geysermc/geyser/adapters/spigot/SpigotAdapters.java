@@ -25,20 +25,20 @@
 
 package org.geysermc.geyser.adapters.spigot;
 
-public class SpigotAdapters {
+public final class SpigotAdapters {
     private static SpigotWorldAdapter worldAdapter;
 
-    public static void registerWorldAdapter(String version) {
-        SpigotWorldAdapterVersion adapterVersion = SpigotWorldAdapterVersion.getByName(version);
-        if (adapterVersion == null) {
-            throw new RuntimeException(String.format(
-                    "WorldAdapter for Spigot %s could not be found!",
-                    version));
-        }
-        worldAdapter = adapterVersion.createAdapter();
+    public static void registerWorldAdapter(String version) throws Exception {
+        // This way we can have classes loaded on later Java versions.
+        Class<? extends SpigotWorldAdapter> adapterVersion =
+                (Class<SpigotWorldAdapter>) Class.forName("org.geysermc.geyser.adapters.spigot." + version + ".WorldAdapter_" + version);
+        worldAdapter = adapterVersion.getConstructor().newInstance();
     }
 
     public static SpigotWorldAdapter getWorldAdapter() {
         return worldAdapter;
+    }
+
+    private SpigotAdapters() {
     }
 }
