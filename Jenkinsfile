@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        gradle 'Gradle 8'
+        //gradle 'Gradle 8'
         jdk 'Java 17'
     }
     options {
@@ -10,12 +10,7 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-                rtGradleRun(
-                    usesPlugin: true,
-                    tool: 'Gradle 8',
-                    buildFile: 'build.gradle.kts',
-                    tasks: 'clean build',
-                )
+                sh './gradlew clean build'
             }
             post {
                 success {
