@@ -1,7 +1,7 @@
 
 dependencies {
     api(projects.adapters)
-    compileOnly("com.destroystokyo.paper", "paper-api", "1.16.5-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper", "paper-api", "1.17.1-R0.1-SNAPSHOT")
 }
 
 repositories {

@@ -9,6 +9,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 allprojects {
     group = "org.geysermc.geyser.adapters"
     version = "1.9-SNAPSHOT"
+    description = "Adapters for Geyser"
 
     tasks.withType<JavaCompile> {
         options.encoding = Charsets.UTF_8.name()
