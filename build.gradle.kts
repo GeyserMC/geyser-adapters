@@ -17,9 +17,7 @@ allprojects {
 }
 
 subprojects {
-    apply {
-        plugin("java-library")
-    }
+    apply(plugin = "java-library")
 
     dependencies {
         compileOnly("com.nukkitx.fastutil:fastutil-int-object-maps:8.3.1")
