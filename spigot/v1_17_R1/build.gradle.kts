@@ -1,6 +1,12 @@
 
 plugins {
+    id("adapters.publish-conventions")
     id("io.papermc.paperweight.userdev")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
 }
 
 dependencies {

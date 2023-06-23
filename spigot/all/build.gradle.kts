@@ -1,6 +1,10 @@
 
+plugins {
+    id("adapters.publish-conventions")
+}
+
 dependencies {
-    implementation(projects.spigot.base)
+    api(projects.spigot.base)
     implementation(projects.spigot.v117R1)
     implementation(projects.spigot.v118R1)
     implementation(projects.spigot.v118R2)
