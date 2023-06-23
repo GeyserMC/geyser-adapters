@@ -3,7 +3,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "geyser-adapters"
 
-include(":adapters")
+include(":common")
 include(":spigot")
 include(":spigot:all")
 include(":spigot:base")

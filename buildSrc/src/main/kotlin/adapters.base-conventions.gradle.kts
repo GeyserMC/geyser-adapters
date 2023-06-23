@@ -13,6 +13,10 @@ tasks {
     withType<JavaCompile> {
         options.encoding = Charsets.UTF_8.name()
     }
+
+    named<Jar>("jar") {
+        archiveClassifier.set("unshaded")
+    }
 }
 
 dependencies {

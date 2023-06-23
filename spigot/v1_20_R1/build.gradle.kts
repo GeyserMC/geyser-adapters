@@ -1,7 +1,6 @@
 
 plugins {
-    id("adapters.publish-conventions")
-    id("io.papermc.paperweight.userdev")
+    id("adapters.paperweight-conventions")
 }
 
 java {
@@ -13,5 +12,3 @@ dependencies {
     implementation(projects.spigot.base)
     paperweight.paperDevBundle("1.20.1-R0.1-SNAPSHOT")
 }
-
-description = "v1_20_R1"

@@ -12,5 +12,3 @@ dependencies {
     implementation(projects.spigot.v119R2)
     implementation(projects.spigot.v119R3)
 }
-
-description = "all"
