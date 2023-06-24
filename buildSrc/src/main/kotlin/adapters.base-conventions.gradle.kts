@@ -14,8 +14,8 @@ tasks {
         options.encoding = Charsets.UTF_8.name()
     }
 
-    named<Jar>("jar") {
-        archiveClassifier.set("unshaded")
+    withType<Jar> {
+        archiveBaseName.set(determineArtifactId(archiveBaseName.get()))
     }
 }
 

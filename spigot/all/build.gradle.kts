@@ -4,11 +4,19 @@ plugins {
 }
 
 dependencies {
+    val shadowOnly by configurations.creating
+
     api(projects.spigot.base)
-    implementation(projects.spigot.v117R1)
-    implementation(projects.spigot.v118R1)
-    implementation(projects.spigot.v118R2)
-    implementation(projects.spigot.v119R1)
-    implementation(projects.spigot.v119R2)
-    implementation(projects.spigot.v119R3)
+    shadowOnly(projects.spigot.v117R1)
+    shadowOnly(projects.spigot.v118R1)
+    shadowOnly(projects.spigot.v118R2)
+    shadowOnly(projects.spigot.v119R1)
+    shadowOnly(projects.spigot.v119R2)
+    shadowOnly(projects.spigot.v119R3)
+}
+
+tasks {
+    shadowJar {
+        configurations.add(project.configurations.getByName("shadowOnly"))
+    }
 }
