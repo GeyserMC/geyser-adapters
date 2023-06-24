@@ -37,3 +37,4 @@ jobs:
           ORG_GRADLE_PROJECT_opencollabRepoPassword: ${{ secrets.DEPLOY_PASS }}
         with:
           arguments: publish
+          gradle-home-cache-cleanup: true
