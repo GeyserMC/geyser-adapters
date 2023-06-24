@@ -6,6 +6,7 @@ plugins {
 
 tasks {
     assemble {
+        // according to paperweight-test-plugin
         dependsOn(reobfJar)
     }
 }

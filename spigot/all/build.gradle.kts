@@ -4,7 +4,9 @@ plugins {
 }
 
 dependencies {
+    // configuration for shading NMS implementations, but not adding them to any classpath, to avoid java version troubles
     val shadowOnly by configurations.creating
+    // target the reobf configuration otherwise we get the mapped classes
     fun shadowOnlyNMS(version: String) = shadowOnly(project(":spigot:v$version", "reobf"))
 
     api(projects.spigot.base)
@@ -19,6 +21,7 @@ dependencies {
 
 tasks {
     shadowJar {
+        // consumers of spigot-all must depend on the shaded jar to get the implementations
         configurations.add(project.configurations.getByName("shadowOnly"))
     }
 }

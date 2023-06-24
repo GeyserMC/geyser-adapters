@@ -27,3 +27,12 @@ jobs:
         with:
           arguments: clean build
           gradle-home-cache-cleanup: true
+
+      - name: Publish to Maven Repository
+        if: ${{ success() && github.repository == 'GeyserMC/adapters' }}
+        uses: gradle/gradle-build-action@v2
+        env:
+          ORG_GRADLE_PROJECT_opencollabRepoUsername: ${{ vars.DEPLOY_USER }}
+          ORG_GRADLE_PROJECT_opencollabRepoPassword: ${{ secrets.DEPLOY_PASS }}
+        with:
+          arguments: publish

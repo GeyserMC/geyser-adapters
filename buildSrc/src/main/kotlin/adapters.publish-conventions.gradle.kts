@@ -25,6 +25,17 @@ publishing {
 
         from(components["java"])
     }
+
+    repositories {
+        maven {
+            name = "opencollabRepo"
+            credentials(PasswordCredentials::class)
+
+            val releasesRepo = "https://repo.opencollab.dev/maven-releases/"
+            val snapshotsRepo = "https://repo.opencollab.dev/maven-snapshots/"
+            url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepo else releasesRepo)
+        }
+    }
 }
 
 /**
