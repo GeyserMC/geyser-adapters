@@ -5,15 +5,16 @@ plugins {
 
 dependencies {
     val shadowOnly by configurations.creating
+    fun shadowOnlyNMS(version: String) = shadowOnly(project(":spigot:v$version", "reobf"))
 
     api(projects.spigot.base)
-    shadowOnly(projects.spigot.v117R1)
-    shadowOnly(projects.spigot.v118R1)
-    shadowOnly(projects.spigot.v118R2)
-    shadowOnly(projects.spigot.v119R1)
-    shadowOnly(projects.spigot.v119R2)
-    shadowOnly(projects.spigot.v119R3)
-    shadowOnly(projects.spigot.v120R1)
+    shadowOnlyNMS("1_17_R1")
+    shadowOnlyNMS("1_18_R1")
+    shadowOnlyNMS("1_18_R2")
+    shadowOnlyNMS("1_19_R1")
+    shadowOnlyNMS("1_19_R2")
+    shadowOnlyNMS("1_19_R3")
+    shadowOnlyNMS("1_20_R1")
 }
 
 tasks {
