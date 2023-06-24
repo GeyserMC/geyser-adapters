@@ -30,9 +30,8 @@ public final class SpigotAdapters {
 
     public static void registerWorldAdapter(String version) throws Exception {
         // This way we can have classes loaded on later Java versions.
-        Class<? extends SpigotWorldAdapter> adapterVersion =
-                (Class<SpigotWorldAdapter>) Class.forName("org.geysermc.geyser.adapters.spigot." + version + ".WorldAdapter_" + version);
-        worldAdapter = adapterVersion.getConstructor().newInstance();
+        Class<?> adapterVersion = Class.forName("org.geysermc.geyser.adapters.spigot." + version + ".WorldAdapter_" + version);
+        worldAdapter = (SpigotWorldAdapter) adapterVersion.getConstructor().newInstance();
     }
 
     public static SpigotWorldAdapter getWorldAdapter() {
