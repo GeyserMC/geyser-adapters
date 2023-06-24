@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - feature/1.20
+  pull_request:
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
           gradle-home-cache-cleanup: true
 
       - name: Publish to Maven Repository
-        if: ${{ success() && github.repository == 'GeyserMC/adapters' }}
+        if: ${{ success() && github.repository == 'GeyserMC/geyser-adapters' && github.ref_name == 'master' }}
         uses: gradle/gradle-build-action@v2
         env:
           ORG_GRADLE_PROJECT_opencollabRepoUsername: ${{ vars.DEPLOY_USER }}
