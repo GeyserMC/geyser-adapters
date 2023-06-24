@@ -12,7 +12,6 @@ tasks {
     }
 
     val shadowJar = named<ShadowJar>("shadowJar") {
-        archiveBaseName.set(determineArtifactId(archiveBaseName.get()))
         archiveClassifier.set("all")
     }
     assemble {
@@ -26,4 +25,15 @@ publishing {
 
         from(components["java"])
     }
+}
+
+/**
+ * Subprojects are prefixed with the name of the parent project. e.g. "spigot-all"
+ * Projects at the root level use the originalId. e.g. "common"
+ */
+fun Project.determineArtifactId(originalId: String): String {
+    if (project.parent != null && project.parent != rootProject) {
+        return "${project.parent!!.name}-${project.name}"
+    }
+    return originalId
 }

@@ -13,6 +13,7 @@ dependencies {
     shadowOnly(projects.spigot.v119R1)
     shadowOnly(projects.spigot.v119R2)
     shadowOnly(projects.spigot.v119R3)
+    shadowOnly(projects.spigot.v120R1)
 }
 
 tasks {

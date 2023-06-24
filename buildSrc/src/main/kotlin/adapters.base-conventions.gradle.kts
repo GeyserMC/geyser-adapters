@@ -13,10 +13,6 @@ tasks {
     withType<JavaCompile> {
         options.encoding = Charsets.UTF_8.name()
     }
-
-    withType<Jar> {
-        archiveBaseName.set(determineArtifactId(archiveBaseName.get()))
-    }
 }
 
 dependencies {
