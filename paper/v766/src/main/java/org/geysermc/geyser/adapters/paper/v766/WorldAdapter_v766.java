@@ -23,7 +23,7 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.geyser.adapters.paper.protocol_766;
+package org.geysermc.geyser.adapters.paper.v766;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -44,7 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class WorldAdapter_protocol_766 extends PaperWorldAdapter {
+public class WorldAdapter_v766 extends PaperWorldAdapter {
     @Override
     public int getBlockAt(World world, int x, int y, int z) {
         if (y < world.getMinHeight()) {

@@ -44,7 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class WorldAdapter_v1_20_5 extends SpigotWorldAdapter {
+public class WorldAdapter_v1_20_R4 extends SpigotWorldAdapter {
     @Override
     public int getBlockAt(World world, int x, int y, int z) {
         if (y < world.getMinHeight()) {

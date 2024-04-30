@@ -34,22 +34,24 @@ public final class PaperAdapters {
 
     public static void registerClosestWorldAdapter(int version) throws Exception {
         if (version < protocols[0]) {
-            throw new IllegalArgumentException("Protocol pre-1.20.5 should use the spigot mapped SpigotAdapters!");
+            throw new IllegalArgumentException("Java versions pre-1.20.5 should use the spigot mapped SpigotAdapters!");
         }
 
         if (Arrays.stream(protocols).anyMatch(value -> version == value)) {
             registerWorldAdapter(version); // Found exact match!
+            return;
         }
 
         int closest = Arrays.stream(protocols)
                 .reduce((a, b) -> Math.abs(a - version) < Math.abs(b - version) ? a : b)
                 .orElse(protocols[0]);
+
         registerWorldAdapter(closest);
     }
 
     public static void registerWorldAdapter(int version) throws Exception {
         // This way we can have classes loaded on later Java versions.
-        Class<?> adapterVersion = Class.forName("org.geysermc.geyser.adapters.paper.protocol_" + version + ".WorldAdapter_protocol_" + version);
+        Class<?> adapterVersion = Class.forName("org.geysermc.geyser.adapters.paper.v" + version + ".WorldAdapter_v" + version);
         worldAdapter = (PaperWorldAdapter) adapterVersion.getConstructor().newInstance();
     }
 
