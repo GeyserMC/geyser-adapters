@@ -34,7 +34,7 @@ public final class PaperAdapters {
 
     public static void registerClosestWorldAdapter(int version) throws Exception {
         if (version < protocols[0]) {
-            throw new IllegalArgumentException("Java versions pre-1.20.5 should use the spigot mapped SpigotAdapters!");
+            throw new IllegalArgumentException("Java versions pre-1.20.5 should use the Spigot mapped SpigotAdapters!");
         }
 
         if (Arrays.stream(protocols).anyMatch(value -> version == value)) {
