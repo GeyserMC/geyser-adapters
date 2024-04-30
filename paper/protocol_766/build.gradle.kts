@@ -1,6 +1,6 @@
 
 plugins {
-    id("adapters.spigot.paperweight-conventions")
+    id("adapters.paper.paperweight-conventions")
 }
 
 java {
@@ -12,6 +12,6 @@ java {
 }
 
 dependencies {
-    implementation(projects.spigot.base)
+    implementation(projects.paper.base)
     paperweight.paperDevBundle("1.20.5-R0.1-SNAPSHOT")
 }
