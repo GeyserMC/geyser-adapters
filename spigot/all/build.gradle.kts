@@ -21,6 +21,7 @@ dependencies {
     adapter("1_20_R1")
     adapter("1_20_R2")
     adapter("1_20_R3")
+    adapter("1_20_R4")
 }
 
 tasks {

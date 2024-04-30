@@ -19,11 +19,11 @@ jobs:
         # See https://github.com/gradle/wrapper-validation-action/commits
         uses: gradle/wrapper-validation-action@56b90f209b02bf6d1deae490e9ef18b21a389cd4
       
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         # See https://github.com/actions/setup-java/commits
         uses: actions/setup-java@4075bfc1b51bf22876335ae1cd589602d60d8758
         with:
-          java-version: 17
+          java-version: 21
           distribution: temurin
           
       - name: Build

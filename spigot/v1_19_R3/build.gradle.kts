@@ -1,6 +1,6 @@
 
 plugins {
-    id("adapters.paperweight-conventions")
+    id("adapters.spigot.paperweight-conventions")
 }
 
 java {
