@@ -1,6 +1,6 @@
 
 allprojects {
     group = "org.geysermc.geyser.adapters"
-    version = "1.13-SNAPSHOT"
+    version = "1.14-SNAPSHOT"
     description = "Adapters for Geyser"
 }

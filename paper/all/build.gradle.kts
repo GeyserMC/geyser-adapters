@@ -9,6 +9,7 @@ val shadowOnly: Configuration by configurations.creating
 dependencies {
     api(projects.paper.base)
     shadowOnly(projects.paper.v766)
+    shadowOnly(projects.paper.v768)
 }
 
 tasks {

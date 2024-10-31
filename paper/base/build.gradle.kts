@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
     api(projects.common)
-    compileOnly("io.papermc.paper", "paper-api", "1.20.5-R0.1-SNAPSHOT") {
+    compileOnly("io.papermc.paper", "paper-api", "1.20.6-R0.1-SNAPSHOT") {
         attributes {
             attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 21)
         }

@@ -30,7 +30,7 @@ import java.util.Arrays;
 public final class PaperAdapters {
     private static PaperWorldAdapter worldAdapter;
 
-    private static final int[] protocols = new int[] {766};
+    private static final int[] protocols = new int[] {766, 768};
 
     public static void registerClosestWorldAdapter(int version) throws Exception {
         if (version < protocols[0]) {
