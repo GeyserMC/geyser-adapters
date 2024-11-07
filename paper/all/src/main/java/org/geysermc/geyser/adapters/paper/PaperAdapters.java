@@ -43,8 +43,9 @@ public final class PaperAdapters {
         }
 
         int closest = Arrays.stream(protocols)
-                .reduce((a, b) -> Math.abs(a - version) < Math.abs(b - version) ? a : b)
-                .orElse(protocols[0]);
+                .filter(v -> v <= version)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("No compatible protocol found for " + version + "!"));
 
         registerWorldAdapter(closest);
     }
