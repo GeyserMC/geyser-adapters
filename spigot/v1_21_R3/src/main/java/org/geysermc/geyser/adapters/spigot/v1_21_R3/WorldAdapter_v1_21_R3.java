@@ -23,7 +23,7 @@
  * @link https://github.com/GeyserMC/Geyser
  */
 
-package org.geysermc.geyser.adapters.spigot.v1_21_R4;
+package org.geysermc.geyser.adapters.spigot.v1_21_R3;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -44,7 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class WorldAdapter_v1_21_R4 extends SpigotWorldAdapter {
+public class WorldAdapter_v1_21_R3 extends SpigotWorldAdapter {
     @Override
     public int getBlockAt(World world, int x, int y, int z) {
         if (y < world.getMinHeight()) {

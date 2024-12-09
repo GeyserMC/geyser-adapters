@@ -19,7 +19,7 @@ include(":spigot:v1_20_R3")
 include(":spigot:v1_20_R4")
 include(":spigot:v1_21_R1")
 include(":spigot:v1_21_R2")
-include(":spigot:v1_21_R4")
+include(":spigot:v1_21_R3")
 
 include(":paper")
 include(":paper:all")
