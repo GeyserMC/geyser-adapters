@@ -1,0 +1,26 @@
+{
+    "schemaVersion": 1,
+    "id": "${id}",
+    "version": "${version}",
+    "name": "${name}",
+    "description": "${description}",
+    "authors": ["${author}"],
+    "contact": {
+        "website": "${website}",
+        "repo": "https://github.com/GeyserMC/geyser-adapters"
+    },
+    "license": "${license}",
+    "icon": "assets/geyser/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "geyser:adapter": [
+            "org.geysermc.geyser.adapters.fabric.v1_21_5.Fabric_v1_21_5"
+        ]
+    },
+    "depends": {
+        "fabricloader": ">=0.16.7",
+        "fabric-api": "*",
+        "minecraft": ">=${minecraft_version}",
+        "geyser-fabric": "*"
+    }
+}

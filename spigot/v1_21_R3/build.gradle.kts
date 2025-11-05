@@ -13,5 +13,5 @@ java {
 
 dependencies {
     implementation(projects.spigot.base)
-    paperweight.paperDevBundle("1.21.4-R0.1-SNAPSHOT")
+    paperweightDevelopmentBundle("io.papermc.paper:dev-bundle:1.21.4-R0.1-SNAPSHOT")
 }

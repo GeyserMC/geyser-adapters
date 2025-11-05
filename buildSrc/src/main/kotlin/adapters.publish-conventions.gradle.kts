@@ -41,9 +41,14 @@ publishing {
 /**
  * Subprojects are prefixed with the name of the parent project. e.g. "spigot-all"
  * Projects at the root level use the originalId. e.g. "common"
+ *
+ * e.g. for modded platforms "modded-v1_20_6-fabric"
  */
 fun Project.determineArtifactId(originalId: String): String {
     if (project.parent != null && project.parent != rootProject) {
+        if (project.parent!!.parent != null && project.parent!!.parent != rootProject) {
+            return "${project.parent!!.parent!!.name}-${project.parent!!.name}-${project.name}"
+        }
         return "${project.parent!!.name}-${project.name}"
     }
     return originalId

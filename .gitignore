@@ -272,3 +272,5 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/git,java,maven,eclipse,netbeans,jetbrains+all,visualstudiocode,gradle
 .paper-nms
 *.iml
+run/
+.idea/runConfigurations/

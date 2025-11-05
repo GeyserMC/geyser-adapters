@@ -25,11 +25,12 @@
 
 package org.geysermc.geyser.adapters.paper;
 
+import org.geysermc.geyser.adapters.PlatformAdapters;
+import org.geysermc.geyser.adapters.WorldAdapter;
+
 import java.util.Arrays;
 
 public final class PaperAdapters {
-    private static PaperWorldAdapter worldAdapter;
-
     private static final int[] protocols = new int[] {766, 768};
 
     public static void registerClosestWorldAdapter(int version) throws Exception {
@@ -53,11 +54,7 @@ public final class PaperAdapters {
     public static void registerWorldAdapter(int version) throws Exception {
         // This way we can have classes loaded on later Java versions.
         Class<?> adapterVersion = Class.forName("org.geysermc.geyser.adapters.paper.v" + version + ".WorldAdapter_v" + version);
-        worldAdapter = (PaperWorldAdapter) adapterVersion.getConstructor().newInstance();
-    }
-
-    public static PaperWorldAdapter getWorldAdapter() {
-        return worldAdapter;
+        PlatformAdapters.setWorldAdapter((WorldAdapter<?>) adapterVersion.getConstructor().newInstance());
     }
 
     private PaperAdapters() {

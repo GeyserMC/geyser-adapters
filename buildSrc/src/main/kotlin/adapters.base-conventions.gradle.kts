@@ -17,6 +17,9 @@ tasks {
 
 dependencies {
     compileOnly("com.nukkitx.fastutil:fastutil-int-object-maps:8.3.1")
+    compileOnly("org.incendo:cloud-core:2.0.0-rc.2")
+    compileOnly("net.kyori:adventure-api:4.24.0")
+    compileOnly("net.kyori:adventure-text-serializer-gson:4.24.0")
 }
 
 repositories {

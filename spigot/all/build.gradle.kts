@@ -9,7 +9,7 @@ val shadowOnly: Configuration by configurations.creating
 dependencies {
 
     // target the reobf configuration otherwise we get the mapped classes
-    fun adapter(version: String) = shadowOnly(project(":spigot:v$version", "reobf"))
+    fun adapter(version: String) = shadowOnly(project(":spigot:v$version"))
 
     api(projects.spigot.base)
     adapter("1_17_R1")

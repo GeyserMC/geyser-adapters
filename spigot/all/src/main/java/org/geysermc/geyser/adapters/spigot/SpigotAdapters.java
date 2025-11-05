@@ -25,17 +25,14 @@
 
 package org.geysermc.geyser.adapters.spigot;
 
-public final class SpigotAdapters {
-    private static SpigotWorldAdapter worldAdapter;
+import org.geysermc.geyser.adapters.PlatformAdapters;
+import org.geysermc.geyser.adapters.WorldAdapter;
 
+public final class SpigotAdapters {
     public static void registerWorldAdapter(String version) throws Exception {
         // This way we can have classes loaded on later Java versions.
         Class<?> adapterVersion = Class.forName("org.geysermc.geyser.adapters.spigot." + version + ".WorldAdapter_" + version);
-        worldAdapter = (SpigotWorldAdapter) adapterVersion.getConstructor().newInstance();
-    }
-
-    public static SpigotWorldAdapter getWorldAdapter() {
-        return worldAdapter;
+        PlatformAdapters.setWorldAdapter((WorldAdapter<?>) adapterVersion.getConstructor().newInstance());
     }
 
     private SpigotAdapters() {
