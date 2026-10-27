@@ -27,11 +27,6 @@ package org.geysermc.geyser.adapters.spigot.v1_19_R2;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -39,10 +34,6 @@ import net.minecraft.world.level.chunk.LevelChunkSection;
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_19_R2.CraftWorld;
 import org.geysermc.geyser.adapters.spigot.SpigotWorldAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class WorldAdapter_v1_19_R2 extends SpigotWorldAdapter {
     @Override
@@ -73,23 +64,5 @@ public class WorldAdapter_v1_19_R2 extends SpigotWorldAdapter {
             blockStates.add(Block.getId(block));
         }
         return blockStates;
-    }
-
-    @Override
-    public String[] getBiomeSuggestions(boolean tags) {
-        Registry<Biome> registry = MinecraftServer.getServer()
-                .registryAccess()
-                .registry(Registries.BIOME).orElseThrow();
-        if (!tags) {
-            return getBiomes(registry).toArray(String[]::new);
-        }
-
-        List<String> keys = new ArrayList<>(registry.getTagNames().map(tag -> "#" + tag.location()).toList());
-        keys.addAll(getBiomes(registry).toList());
-        return keys.toArray(new String[0]);
-    }
-
-    private Stream<String> getBiomes(Registry<Biome> registry) {
-        return registry.keySet().stream().map(ResourceLocation::toString);
     }
 }
