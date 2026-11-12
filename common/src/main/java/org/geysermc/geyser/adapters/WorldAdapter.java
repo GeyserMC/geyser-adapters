@@ -27,6 +27,9 @@ package org.geysermc.geyser.adapters;
 
 import it.unimi.dsi.fastutil.ints.IntList;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * An adapter used for getting specific information from
  * the world.
@@ -35,4 +38,14 @@ public abstract class WorldAdapter<T> {
     public abstract int getBlockAt(T world, int x, int y, int z);
 
     public abstract IntList getAllBlockStates();
+
+    /**
+     * Encodes the server's synchronized registries the way they are sent to a client
+     * that only knows the vanilla data packs, as one registry data packet per registry.
+     *
+     * @return the encoded packets, or an empty list when this adapter can't provide them
+     */
+    public List<byte[]> encodeRegistryData() {
+        return Collections.emptyList();
+    }
 }
