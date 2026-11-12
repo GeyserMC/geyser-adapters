@@ -30,14 +30,18 @@ import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
+import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySynchronization;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.configuration.ClientboundRegistryDataPacket;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.repository.KnownPack;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -50,6 +54,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WorldAdapter_v774 extends PaperWorldAdapter {
     @Override
@@ -80,6 +85,24 @@ public class WorldAdapter_v774 extends PaperWorldAdapter {
             blockStates.add(Block.getId(block));
         }
         return blockStates;
+    }
+
+    @Override
+    public String[] getBiomeSuggestions(boolean tags) {
+        Registry<Biome> registry = MinecraftServer.getServer()
+                .registryAccess()
+                .lookupOrThrow(Registries.BIOME);
+        if (!tags) {
+            return getBiomes(registry).toArray(String[]::new);
+        }
+
+        List<String> keys = new ArrayList<>(registry.getTags().map(tag -> "#" + tag.key().location()).toList());
+        keys.addAll(getBiomes(registry).toList());
+        return keys.toArray(new String[0]);
+    }
+
+    private Stream<String> getBiomes(Registry<Biome> registry) {
+        return registry.keySet().stream().map(Identifier::toString);
     }
 
     @Override

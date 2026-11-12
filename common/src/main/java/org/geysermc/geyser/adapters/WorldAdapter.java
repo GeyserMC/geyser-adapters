@@ -39,6 +39,10 @@ public abstract class WorldAdapter<T> {
 
     public abstract IntList getAllBlockStates();
 
+    public String[] getBiomeSuggestions(boolean tags) {
+        return null;
+    }
+
     /**
      * Encodes the server's synchronized registries the way they are sent to a client
      * that only knows the vanilla data packs, as one registry data packet per registry.
